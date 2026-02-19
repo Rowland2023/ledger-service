@@ -1,1 +1,2 @@
+com.rowland.security.autoconfigure.SecurityAutoConfiguration
 com.rowland.security.autoconfigure.SecurityConfig
