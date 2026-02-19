@@ -8,7 +8,8 @@
         <groupId>com.rowland.security</groupId>
         <artifactId>security-framework-parent</artifactId>
         <version>1.0.0-SNAPSHOT</version>
-        <relativePath>../pom.xml</relativePath> </parent>
+        <relativePath>../pom.xml</relativePath> 
+    </parent>
 
     <artifactId>ledger-service</artifactId>
     <name>ledger-service</name>
@@ -18,7 +19,7 @@
         <dependency>
             <groupId>com.rowland.security</groupId>
             <artifactId>core-security-starter</artifactId>
-            </dependency>
+            <version>1.0.0-SNAPSHOT</version> </dependency>
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -38,7 +39,6 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
-
         <dependency>
             <groupId>io.github.resilience4j</groupId>
             <artifactId>resilience4j-spring-boot3</artifactId>
@@ -57,6 +57,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
+                    <mainClass>com.ledger.systems.service.LedgerServiceApplication</mainClass>
                     <excludes>
                         <exclude>
                             <groupId>org.projectlombok</groupId>
@@ -64,6 +65,13 @@
                         </exclude>
                     </excludes>
                 </configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>

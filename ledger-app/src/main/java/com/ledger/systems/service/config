@@ -1,0 +1,18 @@
+package com.ledger.systems.service.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import java.util.ArrayList;
+
+@Configuration
+public class ApplicationConfig {
+
+    @Bean
+    public UserDetailsService userDetailsService() {
+        // For now, return a dummy user so the app starts. 
+        // Later, you will replace this with a call to your UserRepository.
+        return username -> new User("admin", "password", new ArrayList<>());
+    }
+}
