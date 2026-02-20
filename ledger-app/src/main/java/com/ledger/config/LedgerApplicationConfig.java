@@ -9,7 +9,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 
 @Configuration
 @RequiredArgsConstructor
-public class ApplicationConfig {
+public class LedgerApplicationConfig {
 
     private final UserRepository repository;
 
