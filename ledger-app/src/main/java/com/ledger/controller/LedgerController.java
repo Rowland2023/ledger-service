@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Map;
 
-@RestController
+@RestController // <--- THIS must be RestController, not just @Controller
 @RequestMapping("/api/v1/ledger")
 public class LedgerController {
 
