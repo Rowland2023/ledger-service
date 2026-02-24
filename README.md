@@ -1,0 +1,12 @@
+🏦 Ledger ServiceA stateless, production-ready Ledger microservice designed to demonstrate the integration of a Custom Spring Boot Security Starter. This application focuses on financial transaction integrity while delegating all Authentication and Authorization (AuthN/AuthZ) logic to a decoupled core library.🏗️ Architecture DesignThis service follows the Shared Security Kernel pattern. Instead of local security configurations, it utilizes core-security-starter to:Automatically inject the JwtAuthenticationFilter into the Spring Security filter chain.Enforce Role-Based Access Control (RBAC) via centralized Auto-Configuration.Provide a unified error handling format for security exceptions (401/403).🚀 Technical StackJava 17/21Spring Boot 3.2.2+Maven (Multi-module reactor)JJWT (JSON Web Token implementation)🔧 Integration ProofThe service is designed to be "Secure by Default." Upon startup, the console logs verify that the security starter has successfully intercepted the filter chain:Plaintexto.s.s.web.DefaultSecurityFilterChain : Will secure any request with [
+    ..., 
+    com.rowland.security.jwt.JwtAuthenticationFilter@..., 
+    org.springframework.security.web.access.intercept.AuthorizationFilter@...
+]
+...
+c.l.s.service.LedgerServiceApplication : Started LedgerServiceApplication in 17.425 seconds
+🛠️ Getting Started1. Build the Core StarterBefore running the Ledger app, the security library must be installed in your local .m2 repository:Bashcd ../core-security-starter
+mvn clean install
+2. Run the Ledger ServiceBashcd ../ledger-app
+java -jar ledger-app/target/ledger-service-1.0.0-SNAPSHOT.jar
+🔒 Security EndpointsEndpointMethodRequired RoleDescription/api/v1/ledger/transactionsGETROLE_USERView personal transaction history/api/v1/ledger/auditGETROLE_ADMINAccess system-wide ledger logs/api/v1/public/statusGETN/A (Public)Service health check🛡️ Design DecisionsStatelessness: The service maintains no session state, relying entirely on signed JWT claims for identity and permissions.Observability: Integrated request logging provides an audit trail of which principal accessed which financial endpoint.Modular Decoupling: The Ledger domain logic remains "clean" of security boilerplate, making it easier to test and maintain.
