@@ -69,4 +69,19 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.openrewrite.maven</groupId>
+                <artifactId>rewrite-maven-plugin</artifactId>
+                <version>5.47.3</version>
+                <configuration>
+                    <activeRecipes>
+                        <recipe>com.rowland.upgrade-to-java21</recipe>
+                    </activeRecipes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
 </project>
