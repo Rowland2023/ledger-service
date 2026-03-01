@@ -1,12 +1,16 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5433/postgres
+    # Changed port to 5432 and database to security_db
+    url: jdbc:postgresql://localhost:5432/security_db 
     username: postgres
-    password: God4me@2025 # <-- Put your actual password here
+    password: God4me@2025
     driver-class-name: org.postgresql.Driver
+    hikari:
+      connection-timeout: 5000 # Stop the 500 error hang after 5 seconds
+      maximum-pool-size: 10
   jpa:
     hibernate:
-      ddl-auto: update # Creates tables automatically
+      ddl-auto: update
     show-sql: true
     properties:
       hibernate:
